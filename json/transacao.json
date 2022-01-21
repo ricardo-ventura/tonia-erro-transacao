@@ -1,0 +1,1232 @@
+[
+  {
+    "cod": -3,
+    "descricao": "GOC_DECISION_ERR",
+    "detalhes": "Transação recusada pelo cartão antes de chegar ao autorizador.",
+    "reversao": "A partir do dia 23/06/21, vamos enviar para a fila de tech casos em que a máquina esteja apresentando o erro -3 (versão 2.32.4) em celular Android. O SLA do time de tech será de até 5 dias úteis e podemos orientar o cliente desse prazo.\nEnviar para a fila Ton Tech com a company e o ID do cliente.",
+    "maquina": "T1",
+    "resposta": "Entendi que sua maquininha está apresentando o erro -3, nesse caso vou precisar chamar alguém do meu time para te ajudar com isso, um instante por favor.",
+    "pergunta": "atendente",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": -5,
+    "descricao": "MAGSTRIPE_FALLBACK_ERR",
+    "detalhes": "Erro ao efetuar fallback para tarja magnética, ou seja, ocorre a tentativa de transação por chip e senha sem sucesso, e depois o cliente tenta finalizar na tarja e também dá erro.",
+    "reversao": "1) Pedir para o cliente repetir a tentativa;\n2) Pedir ao cliente para tentar com um cartão diferente.",
+    "maquina": "T1",
+    "resposta": "O erro -5 é quando a transação não é autorizada tanto na tarja quanto via chip, nesse caso peço que aguarde um momento e repita a transação, persistindo, faça o teste utilizando outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": -6,
+    "descricao": "CONNECTION_ERR",
+    "detalhes": "Houve um erro de conexão na tentativa de autorização da transação.",
+    "reversao": "Validar conexão com a internet e tentar novamente.",
+    "maquina": "T1",
+    "resposta": "O erro -6 significa que houve um erro de conexão durante a venda, confira a conexão com a internet e tente novamente",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9,
+    "descricao": "ST_ERRPKTSEC",
+    "detalhes": "Erro na decodificação dos dados recebidos via “Comunicação Segura”; ou Comando recebido “em claro” com a “Comunicação Segura” estabelecida. É um possível erro interno do pinpad.",
+    "reversao": "Tentar novamente e com cartões diferentes, se persistir será necessária a troca do terminal.",
+    "maquina": "T1",
+    "resposta": "Entendi que sua maquininha está apresentando o erro 9, nesse caso é necessário fazer o teste em outro cartão.",
+    "pergunta": "funcionou",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 10,
+    "descricao": "ST_INVCALL",
+    "detalhes": "Chamada inválida à função (operações prévias são necessárias) ou comando desconhecido (em caso de resposta “ERR”). A sequência esperada pelo terminal não foi seguida.",
+    "reversao": "1) Tentar nova transação; \n2) Se o erro for recorrente, solicitar ao cliente que envie o relatório de erros pelo seu app;\n3) Pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T1",
+    "resposta": "O erro 10 significa que a transação não foi aprovada, peço que tente repetir a venda, se o erro persistir pode ser uma instabilidade momentânea, nesse caso basta enviar o relatório de erros do app que meu time vai verificar remotamente.",
+    "pergunta": "relatorio",
+    "fluxo": ""
+  },
+  {
+    "cod": 11,
+    "descricao": "ST_INVPARM",
+    "detalhes": "Um parâmetro inválido foi passado à função. Trata-se de um erro interno do próprio App, sem nada que o cliente possa ter  interferido.",
+    "reversao": "1) Tentar nova transação; \n2) Se o erro for recorrente, solicitar ao cliente que envie o relatório de erros pelo seu app;\n3) Pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T1",
+    "resposta": "Quando acontece o erro 11 significa que houve uma instabilidade no momento da venda, peço que tente novamente.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 12,
+    "descricao": "ST_TIMEOUT",
+    "detalhes": "Esgotado o tempo máximo estipulado para a operação, seja por aproximação ou chip.",
+    "reversao": "Tentar nova transação.",
+    "maquina": "T1",
+    "resposta": "O erro 12 significa que o tempo máximo para operação foi esgotado, basta tentar novamente.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 13,
+    "descricao": "ST_CANCEL",
+    "detalhes": "Operação cancelada pelo portador do cartão.",
+    "reversao": "Tentar nova transação",
+    "maquina": "T1",
+    "resposta": "O erro 13 significa que a operação foi cancelada pelo portador do cartão, basta tentar novamente.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 19,
+    "descricao": "ST_MANDAT",
+    "detalhes": "Um parâmetro mandatório não foi enviado pelo SPE. Pode tratar-se de um bug no App.",
+    "reversao": "1) Tentar nova transação; \n2) Se o erro for recorrente, solicitar ao cliente que envie o relatório de erros pelo seu app;\n3) Pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T1",
+    "resposta": "O erro 19 significa que a transação não foi aprovada, peço que tente repetir a venda, se o erro persistir pode ser uma instabilidade momentânea, nesse caso basta enviar o relatório de erros do app que meu time vai verificar remotamente.",
+    "pergunta": "relatorio",
+    "fluxo": ""
+  },
+  {
+    "cod": 20,
+    "descricao": "ST_TABVERDIF",
+    "detalhes": "A versão das Tabelas EMV difere da esperada, devido à versão do app estar desatualizada.",
+    "reversao": "1) Ver se existe atualização disponível na Playstore/AppleStore. \n2) Limpar o cache do app;\n3) Tentar transacionar novamente.",
+    "maquina": "T1",
+    "resposta": "Quando acontece o erro 20 é necessário que vá até a sua playtore ou applestore e verifique se não há atualização pendente para o aplicativo, limpe o cache e em seguida tente efetuar a venda novamente",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 21,
+    "descricao": "ST_TABERR",
+    "detalhes": "Erro ao tentar gravar tabelas (falta de espaço no terminal, por exemplo).",
+    "reversao": "1) Tentar nova transação; \n2) Se o erro for recorrente, solicitar ao cliente que envie o relatório de erros pelo seu app;\n3) Realizar a troca antes mesmo da investigação, pois o terminal apresenta problema.",
+    "maquina": "T1",
+    "resposta": "Entendi que a sua maquininha está apresentando o erro 21, peço que tente efetuar a venda com outro cartão.",
+    "pergunta": "funcionou",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 40,
+    "descricao": "ST_INTERR",
+    "detalhes": "Erro interno do pinpad (situação inesperada que não possui correspondência com os outros códigos de erro aqui descritos).",
+    "reversao": "1) Pedir ao cliente para tentar novamente algumas  vezes, e com cartões diferentes; \n2) Se persistir, solicitar a troca do  terminal.",
+    "maquina": "T1",
+    "resposta": "No caso do erro 40 é necessário fazer testes em outros cartões.",
+    "pergunta": "funcionou",
+    "fluxo": ""
+  },
+  {
+    "cod": 41,
+    "descricao": "ST_MCDATAERR",
+    "detalhes": "Erro de leitura do cartão magnético.",
+    "reversao": "Pedir ao cliente para tentar passar a tarja novamente",
+    "maquina": "T1",
+    "resposta": "O código 41 significa erro na leitura do cartão magnético, basta tentar novamente.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 42,
+    "descricao": "ST_ERRKEY",
+    "detalhes": "MK/DUKPT referenciado (chave para operações com o cartão) não está presente no pinpad.",
+    "reversao": "Solicitar a troca do terminal.",
+    "maquina": "T1",
+    "resposta": "No caso do erro 41 vou precisar chamar alguém do meu time para te ajudar, só um momento por favor.",
+    "pergunta": "atendente",
+    "fluxo": ""
+  },
+  {
+    "cod": 43,
+    "descricao": "ST_NOCARD",
+    "detalhes": "Cartão não foi inserido ou aproximado.",
+    "reversao": "Pedir para o cliente efetuar a transação novamente.",
+    "maquina": "T1",
+    "resposta": "O erro 43 significa que o cartão não foi inserido ou aproximado corretamente, basta efetuar a venda novamente.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 44,
+    "descricao": "ST_PINBUSY",
+    "detalhes": "Pinpad não pode processar a captura temporariamente devido a questões de segurança (como quando é atingido o limite de capturas dentro de um intervalo de tempo).",
+    "reversao": "Pedir para  tentar transacionar com um cartão diferente.",
+    "maquina": "T1",
+    "resposta": "No caso do erro 44 é necessário fazer um teste num cartão diferente, por favor.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 45,
+    "descricao": "ST_RSPOVRFL",
+    "detalhes": "A montagem dos dados de resposta supera o tamanho máximo permitido. Isso pode indicar bug no SDK ou em tabelas EMV.",
+    "reversao": "1) Tentar nova transação; \n2) Se o erro for recorrente, solicitar ao cliente que envie o relatório de erros pelo seu app;\n3) Pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T1",
+    "resposta": "O erro 45 significa que a transação não foi aprovada, peço que tente repetir a venda, se o erro persistir pode ser uma instabilidade momentânea, nesse caso basta enviar o relatório de erros do app que meu time vai verificar remotamente.",
+    "pergunta": "relatorio",
+    "fluxo": ""
+  },
+  {
+    "cod": 60,
+    "descricao": "ST_DUMBCARD",
+    "detalhes": "Cartão do portador não responde.",
+    "reversao": "Pedir para tentar novamente, ou com outra opção de captura ou outro cartão.",
+    "maquina": "T1",
+    "resposta": "No caso do erro 60 o cartão não está respondendo, peço que tente novamente ou com outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 61,
+    "descricao": "ST_ERRCARD",
+    "detalhes": "Erro de comunicação entre o pinpad e o cartão.",
+    "reversao": "1) Tentar nova transação; \n 2) Se o erro for recorrente, solicitar ao cliente que envie o relatório de erros pelo seu app;\n3) Pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T1",
+    "resposta": "O erro 61 significa que houve uma falha na comunicação da maquininha com o cartão, peço que tente repetir a venda, se o erro persistir pode ser uma instabilidade momentânea, nesse caso basta enviar o relatório de erros do app que meu time vai verificar remotamente.",
+    "pergunta": "relatorio",
+    "fluxo": ""
+  },
+  {
+    "cod": 67,
+    "descricao": "ST_CARDINVALIDAT",
+    "detalhes": "O cartão está inválido.",
+    "reversao": "Pedir para efetuar a  compra com um novo cartão.",
+    "maquina": "T1",
+    "resposta": "O erro 67 significa que o cartão está inválido, tente por favor com outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 68,
+    "descricao": "ST_CARDPROBLEMS",
+    "detalhes": "Cartão com problemas. Esse status é válido para muitas ocorrências no processamento onde o cartão não se comporta conforme o esperado e a transação deve ser finalizada.",
+    "reversao": "Pedir para refazer a operação  com outro cartão.",
+    "maquina": "T1",
+    "resposta": "O erro 68 significa que o cartão está com problema, peço que tente com outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 69,
+    "descricao": "ST_CARDINVDATA",
+    "detalhes": "O cartão comporta-se corretamente, porém possui dados inválidos ou inconsistentes.",
+    "reversao": "Pedir para refazer a operação  com outro cartão.",
+    "maquina": "T1",
+    "resposta": "O erro 69 significa que o cartão está com dados inválidos ou inconsistentes, peço que tente novamente com outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 70,
+    "descricao": "ST_CARDAPPNAV",
+    "detalhes": "Tabelas EMV do app não suportam o cartão.",
+    "reversao": "1) Tentar nova transação; \n2) Se o erro for recorrente, solicitar ao cliente que envie o relatório de erros pelo seu app;\n3) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T1",
+    "resposta": "O erro 70 significa que a transação não foi aprovada, peço que tente repetir a venda, se o erro persistir pode ser uma instabilidade momentânea, nesse caso basta enviar o relatório de erros do app que meu time vai verificar remotamente.",
+    "pergunta": "relatorio",
+    "fluxo": ""
+  },
+  {
+    "cod": 71,
+    "descricao": "ST_CARDAPPNAUT",
+    "detalhes": "O cartão não possui a função selecionada disponível (débito ou crédito).",
+    "reversao": "Pedir ao cliente  para tentar com outro cartão.",
+    "maquina": "T1",
+    "resposta": "O erro 71 significa que o cartão não possuí a função escolhida, peço que tente com outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 76,
+    "descricao": "ST_ERRFALLBACK",
+    "detalhes": "Erro ao tentar transação com chip. É possível tentar por tarja magnética.",
+    "reversao": "1) Tentar novamente a transação;\n2) Caso o erro persista, tentar por tarja no mesmo cartão.",
+    "maquina": "T1",
+    "resposta": "O erro 76 significa que a transação não foi aprovada por chip, pode tentar por tarja magnética ou com outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 80,
+    "descricao": "ST_CTLSSMULTIPLE",
+    "detalhes": "Cliente aproximou mais de um cartão ao terminal.",
+    "reversao": "Refazer apenas com o cartão desejado.",
+    "maquina": "T1",
+    "resposta": "O erro 80 acontece quando é aproximado mais de um cartão no ato da venda, peço que tente apenas com o cartão desejado.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 81,
+    "descricao": "ST_CTLSSCOMMERR",
+    "detalhes": "O cliente não aproximou corretamente o cartão. Pode ter afastado antes de retirar o “bip”.",
+    "reversao": "Refazer a transação, aguardando o sinal de “bip”.",
+    "maquina": "T1",
+    "resposta": "No erro 81 o cartão não foi aproximado corretamente ou foi afastado antes do \"bip\", basta efetuar a venda novamente aproximando e aguardando a confirmação.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 82,
+    "descricao": "ST_CTLSSINVALIDAT",
+    "detalhes": "O NFC do cartão está invalidado ou bloqueado.",
+    "reversao": "Tentar novamente por chip e senha ou tarja.",
+    "maquina": "T1",
+    "resposta": "O erro 82 acontece quando o NFC do cartão está invalido ou bloqueado, peço que tente por chip e senha ou tarja.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 83,
+    "descricao": "ST_CTLSSPROBLEMS",
+    "detalhes": "Problema com o NFC do cartão. Esse status é válido para muitas ocorrências no processamento onde o NFC não se comporta conforme o esperado e a transação deve ser finalizada.",
+    "reversao": "Tentar novamente por chip e senha ou tarja.",
+    "maquina": "T1",
+    "resposta": "O erro 83 acontece quando há problema com o NFC do cartão, peço que tente novamente por chip e senha ou tarja.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 84,
+    "descricao": "ST_CTLSSAPPNAV",
+    "detalhes": "Função (débito ou crédito) não disponível para o cartão NFC selecionado.",
+    "reversao": "Tentar novamente em outra modalidade.",
+    "maquina": "T1",
+    "resposta": "O erro 84 significa que a função débito ou crédito não está disponível para o cartão NFC selecionado, tente novamente em outra modalidade.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 85,
+    "descricao": "ST_CTLSAPPNAUT",
+    "detalhes": "Função escolhida(débito ou crédito) não corresponde ao permitido para o cartão.",
+    "reversao": "Tentar novamente em outra modalidade.",
+    "maquina": "T1",
+    "resposta": "O erro 85 significa que a função débito ou crédito não está disponível para o cartão NFC selecionado, tente novamente em outra modalidade.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 86,
+    "descricao": "ST_CTLSEXTCVM",
+    "detalhes": "Transação deve ser confirmada no celular do portador antes de prosseguir.",
+    "reversao": "Tentar novamente a transação, confirmando no celular do portador antes de prosseguir",
+    "maquina": "T1",
+    "resposta": "O código 86 significa que a venda deve ser confirmada no celular do portador antes de prosseguir, tente novamente.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 87,
+    "descricao": "ST_CTLSIFCHG",
+    "detalhes": "O processamento de NFC resultou em “mudança de interface” (solicitar chip e senha ou tarja).",
+    "reversao": "Concluir a transação com chip ou tarja.",
+    "maquina": "T1",
+    "resposta": "No erro 87 o processamento de NFC não foi aprovado, peço que tente por chip ou tarja.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1000,
+    "descricao": "Não Aprovado",
+    "detalhes": "Resposta genérica do banco emissor, onde não conseguimos definir exatamente onde está o problema.",
+    "reversao": "1)  Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1000 significa que a venda não foi aprovada, aguardar 5 minutos e tentar novamente, se persistir peça que o portador entre em contato com o SAC do banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1001,
+    "descricao": "Cartão Vencido",
+    "detalhes": "Negativa do banco emissor devido ao vencimento do cartão utilizado.",
+    "reversao": "1)  Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O 1001 significa que o cartão está vencido, aguardar 5 minutos e tentar novamente, se persistir peça que o portador entre em contato com o SAC do banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1002,
+    "descricao": "Suspeita de Fraude",
+    "detalhes": "O cartão foi bloqueado pelo banco emissor por suspeita de fraude.",
+    "reversao": "1)  Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "No caso do erro 1002 a venda não foi aprovada pelo banco, aguardar 5 minutos e tentar novamente, se persistir peça que o portador entre em contato com o SAC do banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1003,
+    "descricao": "Estabelecimento Entrar em Contato com a Adquirente",
+    "detalhes": "A transação não foi aprovada pois o cadastro está descredenciado, bloqueado ou cancelado.",
+    "reversao": "Verificar o histórico de casos e o status do cadastro no Jarvis, e então seguir com a tratativa dependendo da origem do problema (descredenciamento, bloqueio ou cadastro cancelado).",
+    "maquina": "Todas",
+    "resposta": "Vou chamar alguém do meu time que vai te ajudar com esse assunto, um momento.",
+    "pergunta": "atendente",
+    "fluxo": ""
+  },
+  {
+    "cod": 1004,
+    "descricao": "Cartão com Restrição",
+    "detalhes": "O banco emissor do cartão negou a transação pois o cartão utilizado apresenta restrições para a operação (limite de parcelamento excedido, uso de produto incompatível, tentativa em meio de captura não autorizado, etc).",
+    "reversao": "1)  Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1004 significa que a venda não foi aprovada, peço que aguarde 5 minutos e tente novamente, se persistir o portador do cartão deve entrar em contato com o SAC do banco emissor.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1006,
+    "descricao": "Tentativas de Senha Excedidas",
+    "detalhes": "O banco emissor negou a transação porque a senha do cartão foi colocada incorretamente mais de 3 vezes.",
+    "reversao": "Indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "No erro 1006 as tentantivas de senha foram excedidas, o portador deve entrar em contato com o SAC que consta no verso do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1007,
+    "descricao": "Consultar o Emissor",
+    "detalhes": "O banco emissor indicou que há um problema com as credenciais usadas na transação. O portador deve usar outro cartão ou contactar o emissor. Pode indicar também que a operação do emissor está enfrentando algum tipo de incidente (queda).",
+    "reversao": "1)  Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1007 significa que a venda não foi aprovada, peço que aguarde 5 minutos e tente novamente, se persistir o portador do cartão deve entrar em contato com o SAC do banco emissor.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1009,
+    "descricao": "Estabelecimento Inválido",
+    "detalhes": "Ocorre quando o cliente tenta transacionar com uma bandeira, mas não tem a bandeira ou modalidade habilitada no Ton.",
+    "reversao": "Verificar no Jarvis se o cadastro do cliente possui habilitação com as bandeiras e produtos tentados. Caso seja uma bandeira que ainda não fazemos habilitação no Ton, informá-lo quais bandeiras temos disponíveis.",
+    "maquina": "Todas",
+    "resposta": "O erro 1009 é quando a bandeira do cartão não é aceita pela maquininha, lembrando que hoje as bandeiras aceitas são: Visa, Master, Elo, Hiper e Amex.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1010,
+    "descricao": "Valor Inválido",
+    "detalhes": "Indica que o valor escolhido para a transação não é válido, tendo sido muito pequeno ou muito grande para a modalidade escolhida. Como nosso POS avisa que não aceitamos transações com valor inferior a R$ 1,00 e não aceita a digitação de valor incorreto, esse erro não deveria ocorrer, portanto pode ser uma instabilidade momentânea do nosso lado.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O 1010 indica que o valor escolhido para venda não é válido, tendo sido muito pequeno ou muito grande para modalidade. Como por exemplo, menos de R$ 1, aguarde 5 minutos e tente novamente com outro valor, se persistir pode ser uma instabilidade momentânea, nesse caso peço desculpas.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1011,
+    "descricao": "Cartão Inválido",
+    "detalhes": "O banco emissor negou a transação porque a numeração do cartão estava incorreta ou não existe.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O 1011 significa que o cartão está inválido, pedimos que aguarde 5 minutos e tente novamente, se persistir pode ser uma instabilidade momentânea, nesse caso pedimos desculpas.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1013,
+    "descricao": "Fee Não Aceito",
+    "detalhes": "Erro que ocorre geralmente para cartões Elo ou Pernambucanas, quando o portador excede um limite de parcelamento permitido para ele.",
+    "reversao": "Indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1013 significa que a venda não foi aprovada, o portador deve entrar em contato com o SAC que consta no verso do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1014,
+    "descricao": "Nenhuma Conta do Tipo Selecionado/Conta Inválida ou Não Existente",
+    "detalhes": "O banco emissor negou a transação de crédito porque o cartão utilizado não possui o produto crédito.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 1014 acontece normalmente quando o cartão não possuí a modalidade crédito, peço que tente repetir a venda em outra função, se persistir pode ser uma instabilidade momentânea e peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1015,
+    "descricao": "Função Selecionada Não Suportada",
+    "detalhes": "O banco emissor negou a transação porque o cartão não permite esse tipo de transação no meio de captura selecionado.",
+    "reversao": "1) Indicar que o cliente tente fazer a transação novamente, verificando com o portador se o cartão utilizado possui o produto selecionado.\n2) Caso o erro persista, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1015 significa que o cartão não permite esse tipo de transação, peço que tente repetir verificando o produto selecionado, se persistir peça que o portador entre em contato com o SAC que consta no verso do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1016,
+    "descricao": "Saldo Insuficiente",
+    "detalhes": "O banco emissor negou a transação porque o portador não tem saldo suficiente para pagar a transação. Pode acontecer no fluxo de cancelamento também, indicando que nosso cliente não tem saldo para cancelar a venda.",
+    "reversao": "1) Em caso de transação, indicar que o portador consulte o saldo antes de efetuar a operação novamente.\n2) Em caso de cancelamento, indicar que o cliente acumule saldo igual ou superior ao valor do cancelamento, para completar a operação.\n3) Caso haja comprovação do saldo, pedir desculpas pelo problema e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 1016 significa saldo insuficiente, nesse caso o portador deve verificar junto ao banco ou tentar em outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1017,
+    "descricao": "Consultar o Emissor",
+    "detalhes": "O banco emissor negou a transação porque a senha inserida não foi a correta.",
+    "reversao": "1) Indicar que o cliente tente fazer a operação novamente.\n2) Caso o problema persista mesmo com a inserção correta da senha,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O 1017 significa que a senha está incorreta, basta refazer a operação utilizando a senha correta, se persistir peça que o portador entre em contato com o banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1019,
+    "descricao": "Transação Não Permitida para o Portador",
+    "detalhes": "O banco emissor negou a transação porque o cartão não pode ser utilizado para esse tipo de transação. Consultar se aceitamos a bandeira do cartão que recebeu a mensagem de erro.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1019 significa que a transação não foi permitida, peço que aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1020,
+    "descricao": "Transação Não Permitida para o Terminal",
+    "detalhes": "O banco emissor negou a transação porque o cartão do portador não pode ser utilizado para esse tipo de transação. Consultar se aceitamos a bandeira do cartão que recebeu a mensagem de erro.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1020 significa que a venda não foi aprovada, peço que aguarde 5 minutos e tente novamente, se persistir o portador deve entrar em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1021,
+    "descricao": "Limite de Valor para Saque Excedido",
+    "detalhes": "O banco emissor negou a transação porque o portador não tem saldo suficiente para pagar a transação. Excede o limite diário, mensal ou parcelado do portador.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O 1021 significa que o valor excede o limite diário, mensal ou parcelado do portador, aguarde 5 minutos e tente novamente, se persistir peça que ele entre em contato com o número do SAC atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1022,
+    "descricao": "Violação de Segurança",
+    "detalhes": "O banco emissor negou a transação devido a uma suspeita de violação de segurança por parte do portador.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1022 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1023,
+    "descricao": "Limite de Quantidade de Saques Excedida",
+    "detalhes": "O banco emissor negou a transação porque o portador não tem saldo suficiente para pagar a transação. Excede o limite diário, mensal ou parcelado do portador.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O 1023 significa que o valor excede o limite diário, mensal ou parcelado do portador, aguarde 5 minutos e tente novamente, se persistir peça que ele entre em contato com o número do SAC atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1024,
+    "descricao": "Violação da Lei",
+    "detalhes": "O banco emissor negou a transação porque a mesma não é permitida em território nacional.",
+    "reversao": "Verificar se o MCC do cliente representa atividade permitida no Brasil. Caso o MCC seja inválido para o território nacional, prosseguir com fluxo de alteração de MCC.",
+    "maquina": "Todas",
+    "resposta": "O erro 1024 significa que a venda não foi aprovada pelo banco emissor, tente novamente em outro cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1025,
+    "descricao": "Cartão Bloqueado",
+    "detalhes": "O banco emissor negou a transação porque o cartão está desabilitado.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1025 significa que o cartão está bloqueado, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta no verso do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1026,
+    "descricao": "Dados de Senha Inválidos",
+    "detalhes": "Houve um erro na configuração do equipamento por parte do fabricante.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, trocar o POS, pois veio de fábrica sem a chave.",
+    "maquina": "Todas",
+    "resposta": "O erro 1026 ocorre quando os dados de senha são inválidos, tente novamente após 5 minutos.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1032,
+    "descricao": "Cartão Roubado ou Perdido",
+    "detalhes": "O banco emissor negou a transação pois o cartão foi relatado como perdido ou roubado.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1032 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1040,
+    "descricao": "?/Bloqueado por Aplicação Stone",
+    "detalhes": "Podem ocorrer em dois cenários:\n\nCenário 1: a partir da 10a transação recusada seguida no mesmo Company, o sistema irá transformar os códigos de retorno em 1040, significando que foi realizado um bloqueio de segurança. Este bloqueio dinâmico dura 24 horas, e tem validade somente para aquele\nCompany.\n\nCenário 2: a bandeira visa pode retornar o erro 1040 sem que tenham havido tentativas prévias, desde que identifique alguma violação na segurança. Esse bloqueio vale só para o Company em que tentou a compra, mas pode durar até 1 mês.",
+    "reversao": "Portador entrar em contato com a SAC no verso do cartão.",
+    "maquina": "Todas",
+    "resposta": "O erro 1040 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1041,
+    "descricao": "Status Ruim para Conta de Origem",
+    "detalhes": "O banco emissor negou a transação pois a conta associada ao cartão apresenta algum tipo de bloqueio ou problema de liquidação.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir,  indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1041 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1042,
+    "descricao": "Status Ruim para a Conta de Destino",
+    "detalhes": "O banco emissor negou a transação pois a conta associada à adquirente apresenta algum tipo de bloqueio ou impedimento de liquidação.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2)Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 1042 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1045,
+    "descricao": "Código de Segurança Inválido",
+    "detalhes": "O banco emissor não conseguiu validar os dados da transação tentada e bloqueou a operação.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 1045 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 1047,
+    "descricao": "Troca de Senha Necessária",
+    "detalhes": "O banco emissor negou a transação pois há uma pendência de atualização de senha do cartão utilizado.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 1047 significa que existe uma pendencia de atualização de senha para o cartão, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 2000,
+    "descricao": "Não Aprovado",
+    "detalhes": "Resposta genérica do emissor. De forma geral, indica um erro no cartão e não no emissor.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Persistindo o erro, Indicar que o portador entre em contato com o banco emissor. Muitas vezes é um filtro do banco por MCC ou meio de fazer o portador entrar em contato com o emissor.",
+    "maquina": "Todas",
+    "resposta": "O Erro 2000 significa que a transação não foi aprovada pelo banco emissor do cartão, peço que tente repetir a venda novamente dentro de 5 minutos, se persistir, solicite que o portador do cartão entre em contato com o SAC do banco emissor.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 2003,
+    "descricao": "Estabelecimento Entrar em Contato com a Adquirente",
+    "detalhes": "A transação não foi aprovada por um bloqueio cadastral no Ton (cancelamento, bloqueio ou descredenciamento), ou então por que o MCC do cliente não permite parcelamentos.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Verificar o status do cadastro, ou então se o cliente tem histórico de casos de bloqueio. Caso seja constatado um problema cadastral que não pode ser resolvido em linha, ou haja suspeita de que o MCC do cliente não pode fazer vendas parceladas, pedir ajuda para o líder de mesa.",
+    "maquina": "Todas",
+    "resposta": "Vou chamar alguém do meu time que vai te ajudar com esse assunto, um momento.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 2006,
+    "descricao": "Tentativas de Senha Excedidas",
+    "detalhes": "O banco emissor negou a transação porque a senha do cartão foi colocada incorretamente mais de 3 vezes.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 2006 acontece quando as tentativas de senha são excedidas, aguarde 5 minutos e tente novamente, se persistir o portador deve entrar em contato com o SAC que consta no verso do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 2007,
+    "descricao": "Condições Especiais",
+    "detalhes": "O banco emissor indicou que há um problema com as credenciais usadas na transação. O portador deve usar outro cartão ou contactar o emissor. Pode indicar também que a operação do emissor está enfrentando algum tipo de incidente (queda).",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 2007 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 2008,
+    "descricao": "Cartão Perdido",
+    "detalhes": "O banco emissor negou a transação pois o cartão utilizado na tentativa foi reportado como perdido e está bloqueado.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 2008 significa que esse cartão foi reportado como perdido ou está bloqueado, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 2009,
+    "descricao": "Cartão Roubado",
+    "detalhes": "O banco emissor negou a transação pois o cartão foi relatado como perdido ou roubado.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 2009 significa que a venda não foi aprovada pelo banco, aguarde 5 minutos e tente novamente, se persistir peça que o portador entre em contato com o SAC que consta atrás do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 5000,
+    "descricao": "Erro Genérico",
+    "detalhes": "Resposta genérica para problemas de conectividade.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente\n2) Persistindo o erro, indicar que o portador entre em contato com o banco emissor. Muitas vezes é  um filtro do banco por MCC ou meio de fazer o portador entrar em contato com o emissor.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "O erro 5000 significa que a venda não foi aprovada, aguardar 5 minutos e tentar novamente, se persistir peça que o portador entre em contato com o SAC do banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 5001,
+    "descricao": "Falha ao Criar Sinal Seguro",
+    "detalhes": "Um tipo de erro de conexão onde o meio de captura não conseguiu estabelecer conexão estável com a rede móvel ou wi-fi durante a ação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5002,
+    "descricao": "Erro no Envio",
+    "detalhes": "Um tipo de erro de conexão onde o meio de captura não conseguiu estabelecer conexão estável com a rede móvel ou wi-fi durante a ação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5003,
+    "descricao": "Formato de Mensagem Inválido",
+    "detalhes": "Um tipo de erro de conexão onde o meio de captura não conseguiu estabelecer conexão estável com a rede móvel ou wifi durante a ação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5005,
+    "descricao": "Tempo Esgotado de Conexão",
+    "detalhes": "Um tipo de erro de conexão onde o meio de captura não conseguiu estabelecer conexão estável com a rede móvel ou wi-fi durante a ação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5007,
+    "descricao": "Tempo Esgotado no Recebimento do Pacote",
+    "detalhes": "Um tipo de erro de conexão onde o meio de captura não conseguiu estabelecer conexão estável com a rede móvel ou wi-fi durante a ação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5008,
+    "descricao": "Erro de DNS",
+    "detalhes": "Um tipo de erro de conexão onde o meio de captura não conseguiu estabelecer conexão estável com a rede móvel ou wi-fi durante a ação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5009,
+    "descricao": "Erro no Recebimento (Conexão)",
+    "detalhes": "Um tipo de erro de conexão onde o meio de captura não conseguiu estabelecer conexão estável com a rede móvel ou wi-fi durante a ação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5023,
+    "descricao": "Erro ao Estabelecer Conexão (TCP e SSL)",
+    "detalhes": "O POS não conseguiu estabelecer uma conexão segura por meio dos protocolos programados e por isso o procedimento tentado foi interrompido.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5024,
+    "descricao": "Desconectado",
+    "detalhes": "A conexão com o POS foi interrompida devido a um erro genérico.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5033,
+    "descricao": "Status Code da Resposta HTTP foi Informativa",
+    "detalhes": "Houve um problema na conversão dos dados recebidos pelo POS e por isso a conexão foi interrompida.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 5620,
+    "descricao": "Falha de Rede",
+    "detalhes": "Um erro genérico de conexão no POS ocorreu durante a operação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente.\n2) Verificar se há incidente de conexão na região do cliente.\n3) Reiniciar o POS para tentar uma reconexão e tentar nova transação.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7001,
+    "descricao": "Falha na Leitura de SmartCard",
+    "detalhes": "O POS não conseguiu fazer a leitura do cartão por um erro genérico no leitor do cartão.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7002,
+    "descricao": "Falha na Leitura de Tarja",
+    "detalhes": "O POS não conseguiu fazer a leitura do cartão por um erro genérico no leitor do cartão.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7003,
+    "descricao": "Falha NFC",
+    "detalhes": "O POS não conseguiu fazer a leitura do cartão por um erro genérico no leitor do cartão.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7004,
+    "descricao": "Cartão Removido Antes da Tela de Senha",
+    "detalhes": "A operação de autorização foi interrompida pois o cartão foi removido durante a tela de senha.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7005,
+    "descricao": "Negado pelo Cartão",
+    "detalhes": "A operação de autorização não foi completada pois foi negada pelo chip do cartão utilizado.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7006,
+    "descricao": "Cartão Não Suportado",
+    "detalhes": "A operação de autorização não foi completada pois o cartão não possui suporte para a modalidade de transação tentada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7007,
+    "descricao": "Cartão Removido em Transação que Seria Aprovada",
+    "detalhes": "A operação de autorização foi interrompida pois o cartão foi removido indevidamente em transação que seria aprovada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7008,
+    "descricao": "Cartão Removido com Erro de Comunicação",
+    "detalhes": "A operação de autorização foi interrompida pois o cartão foi removido indevidamente em transação com problema de comunicação com o autorizador.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7009,
+    "descricao": "Cartão Removido em Transação que Não Seria Aprovada",
+    "detalhes": "A operação de autorização foi interrompida pois o cartão foi removido indevidamente em transação que apresentaria um problema de comunicação com o autorizador.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7010,
+    "descricao": "Cartão Removido Genérico",
+    "detalhes": "A operação de autorização foi interrompida pois o cartão foi removido indevidamente.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7011,
+    "descricao": "Operação Cancelada pelo Usuário",
+    "detalhes": "A operação foi interrompida pelo usuário do POS de forma indevida durante o fluxo da operação. Pode acontecer por erro humano (pressionamento indevido) ou por falha no equipamento.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7100,
+    "descricao": "Transação Abortada - Falha de Leitura de Tag EMV",
+    "detalhes": "A operação foi interrompida no fluxo de autorização por um erro na leitura da mensagem trazida pelo chip do cartão.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7101,
+    "descricao": "Transação Abortada - Falha no EMV",
+    "detalhes": "A operação foi interrompida no fluxo de autorização por um erro na leitura da mensagem trazida pelo chip do cartão.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7102,
+    "descricao": "Transação Abortada - Falha no Fluxo DUKPT",
+    "detalhes": "A operação foi interrompida no fluxo de autorização por um erro na leitura da mensagem trazida pelo chip do cartão.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7200,
+    "descricao": "Erro Genérico de Banco de Dados",
+    "detalhes": "Ocorreu um erro genérico no acesso ao banco de dados pelo POS e a operação precisou ser cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 7300,
+    "descricao": "Erro genérico",
+    "detalhes": "Ocorreu um erro genérico no acesso ao banco de dados pelo POS e a operação precisou ser cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente ou se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor do POS provavelmente foi danificado.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8002,
+    "descricao": "Perda de Conexão no Envio USSD",
+    "detalhes": "Houve uma interrupção de conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8003,
+    "descricao": "Formato de Mensagem USSD Inválida",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8005,
+    "descricao": "Tempo Esgotado de Conexão USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8007,
+    "descricao": "Tempo Esgotado no Recebimento USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8009,
+    "descricao": "Erro no Recebimento USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8015,
+    "descricao": "Erro ao Descomprimir Pacote USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8018,
+    "descricao": "Tamanho de pacote inválido no recebimento USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8020,
+    "descricao": "Tempo Esgota no Envio USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8021,
+    "descricao": "Erro ao Comprimir Pacote USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8022,
+    "descricao": "Alocação com Falha USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8026,
+    "descricao": "Alocação no Recebimento com Falha USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8028,
+    "descricao": "Erro no Envio USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 8029,
+    "descricao": "Indefinido USSD",
+    "detalhes": "Houve uma um problema na conexão USSD durante a tentativa de operação utilizando o POS e por isso a operação foi cancelada.",
+    "reversao": "1) Verificar se o POS possui o Chip instalado corretamente e se há algo impedindo a leitura no slot de tarja.\n2) Reiniciar o POS para tentar uma reconexão e tentar nova transação, preferencialmente com outro cartão.\n3) Se o erro persistir, solicitar uma troca por problema de leitura de cartão. O leitor de tarja do POS provavelmente foi danificado.\n4) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "T2+, T3 e T3+",
+    "resposta": "",
+    "pergunta": "none",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 9100,
+    "descricao": "Erro no Formato da Mensagem",
+    "detalhes": "O banco emissor não reconheceu os detalhes da transação que estão sendo informados por um erro de formatação da mensagem. Pode ser um erro genérico.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9100 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9102,
+    "descricao": "Transação Inválida",
+    "detalhes": "O emissor rejeitou a transação por conta de algum formato ou campo inválido enviado na mensageria da requisição. Pode indicar que algum dado do cartão está incorreto.",
+    "reversao": "1) O cliente deve verificar com o portador se o cartão possui algum tipo de impedimento ou bloqueio. Não havendo, esperar alguns minutos e tentar transacionar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9102 significa transação inválida, verifique com o portador se há algum impedimento ou bloqueio, se não houver, aguarde alguns minutos e tente novamente, se persistir pode ser uma instabilidade momentânea, nesse caso peço desculpas.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9103,
+    "descricao": "Tente Novamente",
+    "detalhes": "Ocorreu um erro inesperado genérico na tentativa de transação.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9103 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9107,
+    "descricao": "Emissor Fora de Operação",
+    "detalhes": "A operação do emissor está enfrentando algum tipo de dificuldade ou incidente e por isto a transação não pôde ser aprovada.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 9107 significa que a venda não foi aprovada, aguardar 5 minutos, verificar a conexão e tentar novamente, se persistir peça que o portador entre em contato com o SAC do banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9108,
+    "descricao": "Não Foi Possível Enviar a Transação para o Destinatário",
+    "detalhes": "A mensagem não chegou corretamente ao emissor, o processo de autorização não foi completo. A transação deve ser passada novamente. Não existe um emissor para o cartão em questão ou o mesmo está fora do ar.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 9108 significa que a venda não foi aprovada, aguardar 5 minutos, verificar a conexão e tentar novamente, se persistir peça que o portador entre em contato com o SAC do banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9109,
+    "descricao": "Erro no Sistema",
+    "detalhes": "Houve um erro de infraestrutura no processamento da requisição, provavelmente em virtude da queda de algum servidor nosso ou do banco emissor.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9109 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9110,
+    "descricao": "Emissor se Desconectou",
+    "detalhes": "Houve uma desconexão do banco emissor no ato da validação da requisição. A operação do emissor provavelmente está enfrentando algum tipo de dificuldade ou incidente e por isto a transação não pôde ser aprovada.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9110 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9111,
+    "descricao": "Emissor Não Respondeu em Tempo",
+    "detalhes": "Houve uma desconexão do banco emissor no ato da validação da requisição. A operação do emissor provavelmente está enfrentando algum tipo de dificuldade ou incidente e por isto a transação não pôde ser aprovada.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9111 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9112,
+    "descricao": "Emissor Indisponível",
+    "detalhes": "A operação do emissor provavelmente está enfrentando algum tipo de dificuldade ou incidente e por isto a transação não pôde ser aprovada.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, indicar que o portador entre em contato com o banco emissor pelo telefone da SAC no verso do cartão, nunca através do seu gerente de conta.",
+    "maquina": "Todas",
+    "resposta": "O erro 9112 significa que a venda não foi aprovada, aguardar 5 minutos e tentar novamente, se persistir peça que o portador entre em contato com o SAC do banco emissor do cartão.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9113,
+    "descricao": "Transmissão Duplicada",
+    "detalhes": "A transação foi transmitida em duplicidade para o banco emissor, por isso foi negada.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9113 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9114,
+    "descricao": "Não Foi Possível Encontrar a Transação Original",
+    "detalhes": "Erro comum em procedimentos de cancelamento de transações. Ocorre quando há uma tentativa de desfazimento ou cancelamento de uma transação que já sofreu a operação anteriormente.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9114 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": 9999,
+    "descricao": "Erro Não Especificado",
+    "detalhes": "Resposta genérica que pode representar problemas de infraestrutura por parte da Adquirente ou do banco emissor.",
+    "reversao": "1) Aguardar 5 minutos. Verificar a conexão do meio de captura e tentar novamente.\n2) Se o erro persistir, pedir desculpas e informar ao cliente que pode estar havendo uma instabilidade momentânea do nosso lado, e que iremos notificar os responsáveis para corrigir o mais rápido possível.",
+    "maquina": "Todas",
+    "resposta": "O erro 9999 significa que a venda não foi aprovada, aguarde 5 minutos e tente novamente, caso persista pode estar havendo uma instabilidade momentânea, peço desculpas por isso.",
+    "pergunta": "none",
+    "fluxo": ""
+  },
+  {
+    "cod": -4,
+    "descricao": "",
+    "detalhes": "",
+    "reversao": "Atualizar App",
+    "maquina": "T1",
+    "resposta": "Para corrigir o erro -4, atualize o app para a versão (2.33.3) ou superior na sua loja de aplicativos.\n\nApós isso faça o teste passando uma venda de R$1,00 em outro cartão.",
+    "pergunta": "funcionou",
+    "fluxo": "Sim"
+  },
+  {
+    "cod": 4,
+    "descricao": "",
+    "detalhes": "",
+    "reversao": "Atualizar App",
+    "maquina": "T1",
+    "resposta": "Para corrigir o erro -4, atualize o app para a versão (2.33.3) ou superior na sua loja de aplicativos.\n\nApós isso faça o teste passando uma venda de R$1,00 em outro cartão.",
+    "pergunta": "funcionou",
+    "fluxo": "Sim"
+  }
+]
